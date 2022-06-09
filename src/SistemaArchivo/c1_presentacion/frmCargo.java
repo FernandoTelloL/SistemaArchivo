@@ -37,12 +37,16 @@ public class frmCargo extends javax.swing.JInternalFrame {
 
         btnRegresar = new javax.swing.JButton();
         txtNombreCargo = new javax.swing.JTextField();
-        txtDescripcionCargo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnAgregarCargo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbCargo = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescripcionCargo = new javax.swing.JTextArea();
+        btnEliminarCargo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtIdCargo = new javax.swing.JTextField();
 
         setTitle("CARGO");
 
@@ -71,58 +75,79 @@ public class frmCargo extends javax.swing.JInternalFrame {
         });
 
         jtbCargo.setModel(modeloCargo);
+        jtbCargo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbCargoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtbCargo);
+
+        txtDescripcionCargo.setColumns(20);
+        txtDescripcionCargo.setRows(5);
+        jScrollPane2.setViewportView(txtDescripcionCargo);
+
+        btnEliminarCargo.setText("Eliminar Cargo");
+        btnEliminarCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCargoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregarCargo)
-                            .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(27, 27, 27))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(64, 64, 64)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDescripcionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(182, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAgregarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescripcionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1)
+                    .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addComponent(btnAgregarCargo)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegresar)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminarCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegresar)
+                        .addGap(134, 134, 134))))
         );
 
         pack();
@@ -146,6 +171,8 @@ public class frmCargo extends javax.swing.JInternalFrame {
         }
     }
     
+    
+     
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         
         this.dispose();
@@ -169,30 +196,72 @@ public class frmCargo extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "Se guardo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
                     limpiarPanelCargo();
                     //activarOpcionPanelProducto(true);
-                    //mostrarProductos();
+                    mostrarCargo();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema Archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Faltan llenar datos.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnAgregarCargoActionPerformed
+
+    //funcion para mostrar los datos de la fila en las cajas de texto del formulario
+    private void jtbCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbCargoMouseClicked
+        
+        int row = jtbCargo.getSelectedRow();
+        txtNombreCargo.setEnabled(true);
+        txtDescripcionCargo.setEnabled(true);
+        txtIdCargo.setText(modeloCargo.getValueAt(row, 0).toString());
+        txtNombreCargo.setText(modeloCargo.getValueAt(row, 1).toString());
+        txtDescripcionCargo.setText(modeloCargo.getValueAt(row, 2).toString());
+        
+    }//GEN-LAST:event_jtbCargoMouseClicked
+
+    private void btnEliminarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCargoActionPerformed
+        
+        int registros_afectados = 0;
+        if (txtIdCargo.getText().compareTo("") != 0) {
+            try {
+                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas eliminar? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
+                    CargoServicio cargoServicio = new CargoServicio();
+                    registros_afectados = cargoServicio.eliminarCargo(Integer.parseInt(txtIdCargo.getText().trim()));
+                    if (registros_afectados == 1) {
+                        JOptionPane.showMessageDialog(this, "Se eliminó correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarPanelCargo();
+                        //activarOpcionPanelProducto(true);
+                        mostrarCargo();
+                    }
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema ChicamaSoft: Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Faltan llenar datos.", "Sistema ChicamaSoft: Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Producto.", "Sistema ChicamaSoft: Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-
-    }//GEN-LAST:event_btnAgregarCargoActionPerformed
+        
+    }//GEN-LAST:event_btnEliminarCargoActionPerformed
 
     public void limpiarPanelCargo() {
+        txtIdCargo.setText("");
         txtNombreCargo.setText("");
         txtDescripcionCargo.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCargo;
+    private javax.swing.JButton btnEliminarCargo;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtbCargo;
-    private javax.swing.JTextField txtDescripcionCargo;
+    private javax.swing.JTextArea txtDescripcionCargo;
+    private javax.swing.JTextField txtIdCargo;
     private javax.swing.JTextField txtNombreCargo;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,20 @@ public class CargoServicio {
         }
     }
 
+    public int eliminarCargo(int cargoId) throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            int registros_afectados = cargoDAO.eliminarCargo(cargoId);
+            gestorJDBC.terminarTransaccion();
+            return registros_afectados;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+    
      public ArrayList<Cargo> mostrarCargo() throws Exception {
         try {
             gestorJDBC.abrirConexion();
