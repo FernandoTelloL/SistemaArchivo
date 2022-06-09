@@ -47,6 +47,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
         btnEliminarCargo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtIdCargo = new javax.swing.JTextField();
+        btnModificarCargo = new javax.swing.JButton();
 
         setTitle("CARGO");
 
@@ -95,6 +96,13 @@ public class frmCargo extends javax.swing.JInternalFrame {
 
         jLabel1.setText("ID:");
 
+        btnModificarCargo.setText("Modificar Cargo");
+        btnModificarCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarCargoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,8 +125,9 @@ public class frmCargo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAgregarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +152,9 @@ public class frmCargo extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(btnAgregarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(22, 22, 22)
+                        .addComponent(btnModificarCargo)
+                        .addGap(27, 27, 27)
                         .addComponent(btnEliminarCargo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegresar)
@@ -244,6 +255,35 @@ public class frmCargo extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnEliminarCargoActionPerformed
 
+    private void btnModificarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCargoActionPerformed
+        
+        int registros_afectados = 0;
+        if (txtNombreCargo.getText().compareTo("") != 0 && txtDescripcionCargo.getText().compareTo("") != 0) {
+            try {
+                Cargo cargo = new Cargo();
+                cargo.setId(Integer.parseInt(txtIdCargo.getText().trim()));
+                cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
+                cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
+                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas actualizar? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
+                    CargoServicio cargoServicio = new CargoServicio();
+                    registros_afectados = cargoServicio.actualizarCargo(cargo);
+                    if (registros_afectados == 1) {
+                        JOptionPane.showMessageDialog(this, "Se actualizo coreectamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarPanelCargo();
+                        //activarOpcionPanelProducto(true);
+                        mostrarCargo();
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un CARGO y tener todos los campos con información.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnModificarCargoActionPerformed
+
     public void limpiarPanelCargo() {
         txtIdCargo.setText("");
         txtNombreCargo.setText("");
@@ -253,6 +293,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCargo;
     private javax.swing.JButton btnEliminarCargo;
+    private javax.swing.JButton btnModificarCargo;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
