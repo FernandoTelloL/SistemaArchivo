@@ -3,11 +3,20 @@ package SistemaArchivo.c3_dominio;
 
 public class Cargo {
 
+    private int id;
     private String cargo;
     private String descripcion;
     
     public Cargo(){
         
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCargo() {

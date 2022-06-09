@@ -32,4 +32,19 @@ public class CargoServicio {
         }
     }
 
+     public ArrayList<Cargo> mostrarCargo() throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            ArrayList<Cargo> lista = cargoDAO.mostrarCargo();
+            gestorJDBC.terminarTransaccion();
+            return lista;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+
+    
 }
