@@ -28,6 +28,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
         initComponents();
       
         mostrarCargo();
+        activarInternalFrameInicio(true);
         modeloCargo.setColumnIdentifiers(nombreColumnaModeloCargo);
     }
 
@@ -35,7 +36,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRegresar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         txtNombreCargo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,13 +49,15 @@ public class frmCargo extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdCargo = new javax.swing.JTextField();
         btnModificarCargo = new javax.swing.JButton();
+        btnGuardarCargo = new javax.swing.JButton();
+        btnCancelarCargo = new javax.swing.JButton();
 
         setTitle("CARGO");
 
-        btnRegresar.setText("Salir");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -103,6 +106,20 @@ public class frmCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        btnGuardarCargo.setText("Guardar Cargo");
+        btnGuardarCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCargoActionPerformed(evt);
+            }
+        });
+
+        btnCancelarCargo.setText("Cancelar");
+        btnCancelarCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCargoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,9 +141,11 @@ public class frmCargo extends javax.swing.JInternalFrame {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAgregarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -152,12 +171,16 @@ public class frmCargo extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(btnAgregarCargo)
-                        .addGap(22, 22, 22)
-                        .addComponent(btnModificarCargo)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnEliminarCargo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegresar)
+                        .addComponent(btnCancelarCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGuardarCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModificarCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminarCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalir)
                         .addGap(134, 134, 134))))
         );
 
@@ -184,38 +207,20 @@ public class frmCargo extends javax.swing.JInternalFrame {
     
     
      
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         
         this.dispose();
         
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtNombreCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCargoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreCargoActionPerformed
 
     private void btnAgregarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCargoActionPerformed
-        int registros_afectados = 0;
-        if (txtNombreCargo.getText().compareTo("") != 0 && txtDescripcionCargo.getText().compareTo("") != 0) {
-            try {
-                Cargo cargo = new Cargo();
-                cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
-                cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
-                CargoServicio cargoServicio = new CargoServicio();
-                registros_afectados = cargoServicio.guardarCargo(cargo);
-                if (registros_afectados == 1) {
-                    JOptionPane.showMessageDialog(this, "Se guardo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
-                    limpiarPanelCargo();
-                    //activarOpcionPanelProducto(true);
-                    mostrarCargo();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema Archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Faltan llenar datos.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
-
+       
+        activarInternalFrameAgregarCargo(true);
+        
     }//GEN-LAST:event_btnAgregarCargoActionPerformed
 
     //funcion para mostrar los datos de la fila en las cajas de texto del formulario
@@ -227,6 +232,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
         txtIdCargo.setText(modeloCargo.getValueAt(row, 0).toString());
         txtNombreCargo.setText(modeloCargo.getValueAt(row, 1).toString());
         txtDescripcionCargo.setText(modeloCargo.getValueAt(row, 2).toString());
+        activarInternalFrameModificarCargo(true);
         
     }//GEN-LAST:event_jtbCargoMouseClicked
 
@@ -242,7 +248,7 @@ public class frmCargo extends javax.swing.JInternalFrame {
                     if (registros_afectados == 1) {
                         JOptionPane.showMessageDialog(this, "Se eliminó correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
                         limpiarPanelCargo();
-                        //activarOpcionPanelProducto(true);
+                        activarInternalFrameCargo(true);
                         mostrarCargo();
                     }
                 }
@@ -264,14 +270,14 @@ public class frmCargo extends javax.swing.JInternalFrame {
                 cargo.setId(Integer.parseInt(txtIdCargo.getText().trim()));
                 cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
                 cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
-                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas actualizar? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
+                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas actualizar la información? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
                     CargoServicio cargoServicio = new CargoServicio();
                     registros_afectados = cargoServicio.actualizarCargo(cargo);
                     if (registros_afectados == 1) {
-                        JOptionPane.showMessageDialog(this, "Se actualizo coreectamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Se actualizo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
                         limpiarPanelCargo();
-                        //activarOpcionPanelProducto(true);
+                        activarInternalFrameCargo(true);
                         mostrarCargo();
                     }
                 }
@@ -284,17 +290,93 @@ public class frmCargo extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnModificarCargoActionPerformed
 
+    private void btnGuardarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCargoActionPerformed
+        
+         int registros_afectados = 0;
+        if (txtNombreCargo.getText().compareTo("") != 0 && txtDescripcionCargo.getText().compareTo("") != 0) {
+            try {
+                Cargo cargo = new Cargo();
+                cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
+                cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
+                CargoServicio cargoServicio = new CargoServicio();
+                registros_afectados = cargoServicio.guardarCargo(cargo);
+                if (registros_afectados == 1) {
+                    JOptionPane.showMessageDialog(this, "Se guardo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarPanelCargo();
+                    activarInternalFrameInicio(true);
+                    mostrarCargo();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema Archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Faltan llenar datos.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnGuardarCargoActionPerformed
+
+    private void btnCancelarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCargoActionPerformed
+        txtIdCargo.setText("");
+        txtNombreCargo.setText("");
+        txtDescripcionCargo.setText("");
+        activarInternalFrameInicio(true);
+    }//GEN-LAST:event_btnCancelarCargoActionPerformed
+
     public void limpiarPanelCargo() {
         txtIdCargo.setText("");
         txtNombreCargo.setText("");
         txtDescripcionCargo.setText("");
     }
 
+    public void activarInternalFrameCargo(boolean sw) {
+        txtIdCargo.setEnabled(!sw);
+        txtNombreCargo.setEnabled(!sw);
+        txtDescripcionCargo.setEnabled(!sw);
+        btnAgregarCargo.setEnabled(sw);
+        btnGuardarCargo.setEnabled(!sw);
+        btnCancelarCargo.setEnabled(!sw);
+        btnModificarCargo.setEnabled(sw);
+        btnEliminarCargo.setEnabled(sw);
+    }
+    
+    public void activarInternalFrameInicio(boolean sw) {
+        txtIdCargo.setEnabled(!sw);
+        txtNombreCargo.setEnabled(!sw);
+        txtDescripcionCargo.setEnabled(!sw);
+        btnAgregarCargo.setEnabled(sw);
+        btnGuardarCargo.setEnabled(!sw);
+        btnCancelarCargo.setEnabled(!sw);
+        btnModificarCargo.setEnabled(!sw);
+        btnEliminarCargo.setEnabled(!sw);
+        btnSalir.setEnabled(sw);
+    }
+    
+    public void activarInternalFrameAgregarCargo(boolean sw) {
+        txtIdCargo.setEnabled(!sw);
+        txtNombreCargo.setEnabled(sw);
+        txtDescripcionCargo.setEnabled(sw);
+        btnGuardarCargo.setEnabled(sw);
+        btnCancelarCargo.setEnabled(sw);
+    }
+    
+    public void activarInternalFrameModificarCargo(boolean sw) {
+        txtIdCargo.setEnabled(!sw);
+        txtNombreCargo.setEnabled(sw);
+        txtDescripcionCargo.setEnabled(sw);
+        btnAgregarCargo.setEnabled(!sw);
+        btnGuardarCargo.setEnabled(!sw);
+        btnCancelarCargo.setEnabled(sw);
+        btnModificarCargo.setEnabled(sw);
+        btnEliminarCargo.setEnabled(sw);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCargo;
+    private javax.swing.JButton btnCancelarCargo;
     private javax.swing.JButton btnEliminarCargo;
+    private javax.swing.JButton btnGuardarCargo;
     private javax.swing.JButton btnModificarCargo;
-    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
