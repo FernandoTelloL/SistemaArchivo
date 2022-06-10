@@ -11,10 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class FormSistema extends javax.swing.JFrame {
+    
     FormCargo formCargo = new FormCargo();
+    FormUser formUser;
     private JDesktopPane escritorio;
     
-    public FormSistema() throws PropertyVetoException {
+    public FormSistema() throws PropertyVetoException, Exception {
+        this.formUser = new FormUser();
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de Archivos MDCH");
@@ -23,6 +26,7 @@ public class FormSistema extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         formCargo.setMaximum(true);
+        //formUser.setMaximum(true);
     }
     
     @SuppressWarnings("unchecked")
@@ -35,6 +39,7 @@ public class FormSistema extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
+        menuUsuarios = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -53,7 +58,7 @@ public class FormSistema extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Mantenimiento");
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu2ActionPerformed(evt);
@@ -67,6 +72,14 @@ public class FormSistema extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menuCargo);
+
+        menuUsuarios.setText("Usuarios");
+        menuUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuUsuarios);
 
         jMenuBar1.add(jMenu2);
 
@@ -89,6 +102,11 @@ public class FormSistema extends javax.swing.JFrame {
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuSalirActionPerformed
+
+    private void menuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuariosActionPerformed
+        escritorio.add(formUser);
+        formUser.setVisible(true);
+    }//GEN-LAST:event_menuUsuariosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -121,6 +139,8 @@ public class FormSistema extends javax.swing.JFrame {
                     new FormSistema().setVisible(true);
                 } catch (PropertyVetoException ex) {
                     Logger.getLogger(FormSistema.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(FormSistema.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -133,5 +153,6 @@ public class FormSistema extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuCargo;
     private javax.swing.JMenuItem menuSalir;
+    private javax.swing.JMenuItem menuUsuarios;
     // End of variables declaration//GEN-END:variables
 }

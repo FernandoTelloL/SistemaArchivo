@@ -73,6 +73,20 @@ public class CargoServicio {
             throw e;
         }
     }
+    
+    public int obtenerIdCargo(Object cargo) throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            int idCargo = cargoDAO.obtenerIdCargo(cargo);
+            gestorJDBC.terminarTransaccion();
+            return idCargo;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
 
     
 }

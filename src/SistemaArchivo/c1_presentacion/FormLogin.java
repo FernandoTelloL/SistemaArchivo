@@ -93,6 +93,8 @@ public class FormLogin extends javax.swing.JFrame {
             ingresar();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
@@ -141,7 +143,7 @@ public class FormLogin extends javax.swing.JFrame {
         return con;
     }
     
-    public void ingresar() throws PropertyVetoException {
+    public void ingresar() throws PropertyVetoException, Exception {
         Connection con1 = null;
         PreparedStatement pst = null;
         ResultSet rs = null;

@@ -10,6 +10,8 @@ public class CargoDAO {
     
     GestorJDBC gestorJDBC;
     
+    public CargoDAO(){}
+    
     public CargoDAO(GestorJDBC gestorJDBC) {
         this.gestorJDBC = gestorJDBC;
     }
@@ -80,5 +82,21 @@ public class CargoDAO {
                     + "Intente de nuevo o consulte con el Administrador.");
         }
         return lista;
+    }
+    
+    public int obtenerIdCargo(Object cargo) throws SQLException {
+        int registros_afectados;
+        int idCargo = 0;
+        String sentenciaSQL = "select id from cargo where cargo = ?";
+        try {
+           PreparedStatement sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
+            sentencia.setString(1, (String) cargo);
+            registros_afectados = sentencia.executeUpdate();
+            return idCargo;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new SQLException("Error al intentar obtener el id de cargo.\n"
+                    + "Intente de nuevo o consulte con el Administrador.");
+        }
     }
 }

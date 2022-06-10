@@ -10,6 +10,12 @@ public class Cargo {
     public Cargo(){
         
     }
+    
+    public Cargo(int id, String cargo, String descripcion) {
+        this.id = id;
+        this.cargo = cargo;
+        this.descripcion = descripcion;
+    }
 
     public int getId() {
         return id;
@@ -35,6 +41,8 @@ public class Cargo {
         this.descripcion = descripcion;
     }
     
-    
+    public String toString() {
+        return cargo; 
+    }
     
 }
