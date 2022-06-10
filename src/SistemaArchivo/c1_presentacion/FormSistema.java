@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class FormSistema extends javax.swing.JFrame {
-    frmCargo formCargo = new frmCargo();
+    FormCargo formCargo = new FormCargo();
     private JDesktopPane escritorio;
     
     public FormSistema() throws PropertyVetoException {
@@ -77,7 +77,7 @@ public class FormSistema extends javax.swing.JFrame {
 
     
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
-        //frmCargo formCargo = new frmCargo();
+        //frmCargo formCargo = new FormCargo();
         escritorio.add(formCargo);
         formCargo.setVisible(true);
     }//GEN-LAST:event_menuCargoActionPerformed

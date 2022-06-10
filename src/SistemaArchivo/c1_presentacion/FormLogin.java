@@ -1,13 +1,20 @@
 
 package SistemaArchivo.c1_presentacion;
 
+import java.beans.PropertyVetoException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-public class login extends javax.swing.JFrame {
+public class FormLogin extends javax.swing.JFrame {
 
   
-    public login() {
+    public FormLogin() {
         initComponents();
+        txtUserName.setText("");
+        txtPassword.setText("");
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -82,27 +89,11 @@ public class login extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         
-        /*int registros_afectados = 0;
-        if (txtUserName.getText().compareTo("") != 0 && txtPassword.getText().compareTo("") != 0) {
-            try {
-                Cargo cargo = new Cargo();
-                cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
-                cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
-                CargoServicio cargoServicio = new CargoServicio();
-                registros_afectados = cargoServicio.guardarCargo(cargo);
-                if (registros_afectados == 1) {
-                    JOptionPane.showMessageDialog(this, "Se guardo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
-                    limpiarPanelCargo();
-                    //activarOpcionPanelProducto(true);
-                    //mostrarProductos();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema ChicamaSoft: Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Faltan llenar datos.", "Sistema ChicamaSoft: Advertencia", JOptionPane.WARNING_MESSAGE);
-        }*/
-        
+        try {
+            ingresar();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
  
@@ -120,24 +111,62 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new FormLogin().setVisible(true);
             }
         });
     }
 
+    public Connection Conectar() {
+        Connection con = null;
+        try {
+           con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","fernando","fernando");
+        } catch (SQLException e) {
+            System.err.print(e.toString());
+            JOptionPane.showMessageDialog(this, "ocurrió un error inesperado, comuniquese con el administrador");
+        }
+        return con;
+    }
+    
+    public void ingresar() throws PropertyVetoException {
+        Connection con1 = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String userName = txtUserName.getText();
+        String pass = txtPassword.getText();
+        if(userName.equals("") || pass.equals("")) {
+            JOptionPane.showMessageDialog(this, "Uno o mas campos están vacios, por favor llenarlos.");
+        } else {
+            try {
+                con1 = Conectar();
+                pst = con1.prepareStatement("select username, password from user where username ='" + userName + "' and password = '" + pass+"'");
+                rs = pst.executeQuery();
+                if (rs.next()){
+                    this.dispose();
+                    FormSistema formSistema = new FormSistema();
+                    formSistema.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this,"Credenciales incorrectas vuelve a intentar denuevo");
+                }
+            } catch (SQLException e) {
+                
+            }
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel jLabel1;
