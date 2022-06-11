@@ -74,11 +74,11 @@ public class CargoServicio {
         }
     }
     
-    public int obtenerIdCargo(Object cargo) throws Exception {
+    public int obtenerIdCargo(String nombreCargo) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            int idCargo = cargoDAO.obtenerIdCargo(cargo);
+            int idCargo = cargoDAO.obtenerIdCargo(nombreCargo);
             gestorJDBC.terminarTransaccion();
             return idCargo;
         } catch (Exception e) {
@@ -88,5 +88,18 @@ public class CargoServicio {
         }
     }
 
+    public String obtenerNombreCargo(int id) throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            String nombreCargo = cargoDAO.obtenerNombreCargo(id);
+            gestorJDBC.terminarTransaccion();
+            return nombreCargo;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
     
 }

@@ -9,6 +9,11 @@ public class User {
     private int cargo;
     private String nombres;
     private String apellidos;
+    
+    
+    public User(){
+        
+    }
 
     public int getId() {
         return id;
@@ -34,9 +39,6 @@ public class User {
         this.apellidos = apellidos;
     }
     
-    public User(){
-        
-    }
 
     public String getUsername() {
         return username;
@@ -61,6 +63,8 @@ public class User {
     public void setCargo(int cargo) {
         this.cargo = cargo;
     }
+
+  
     
     
     

@@ -64,6 +64,7 @@ public class CargoDAO {
         }
     }
     
+    //mostrar cargos en tabla
     public ArrayList<Cargo> mostrarCargo() throws SQLException {
         ArrayList<Cargo> lista = new ArrayList<>();
         String sentenciaSQL = "select * from cargo where estado = 'V'";
@@ -84,15 +85,32 @@ public class CargoDAO {
         return lista;
     }
     
-    public int obtenerIdCargo(Object cargo) throws SQLException {
+    public int obtenerIdCargo(String nombreCargo) throws SQLException {
         int registros_afectados;
         int idCargo = 0;
         String sentenciaSQL = "select id from cargo where cargo = ?";
         try {
            PreparedStatement sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
-            sentencia.setString(1, (String) cargo);
+            sentencia.setString(1, nombreCargo);
             registros_afectados = sentencia.executeUpdate();
-            return idCargo;
+            return registros_afectados;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new SQLException("Error al intentar obtener el id de cargo.\n"
+                    + "Intente de nuevo o consulte con el Administrador.");
+        }
+    }
+    
+    public String obtenerNombreCargo(int id) throws SQLException {
+        int registros_afectados;
+        //int idCargo = 0;
+        String nombreCargo = null;
+        String sentenciaSQL = "select cargo from cargo where id= ?";
+        try {
+           PreparedStatement sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
+            sentencia.setInt(1, id);
+            registros_afectados = sentencia.executeUpdate();
+            return nombreCargo;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException("Error al intentar obtener el id de cargo.\n"

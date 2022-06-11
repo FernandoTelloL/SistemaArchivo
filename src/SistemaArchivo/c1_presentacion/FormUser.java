@@ -18,11 +18,11 @@ public class FormUser extends javax.swing.JInternalFrame {
     GestorJDBC gestorJDBC;
     String idDeCombo;
 
-    String nombreColumnaModeloCargo[] = {"Id", "Cargo", "Descripción"};
+    String nombreColumnaModeloUser[] = {"Id", "Username", "Contraseña", "Cargo", "Nombres", "Apellidos"};
     String nombreColumnaModeloEntrrada[] = {"Codigo", "Descripcion", "Precio", "Cantidad", "Importe"};
     String nombreColumnaModeloSalida[] = {"Codigo", "Descripcion", "Precio", "Cantidad", "Importe"};
     String nombreColumnaModeloOInventario[] = {"Codigo", "Descripcion", "Entrada", "Salida", "Stock"};
-    DefaultTableModel modeloCargo = new DefaultTableModel() {
+    DefaultTableModel modeloUser = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
@@ -33,6 +33,7 @@ public class FormUser extends javax.swing.JInternalFrame {
         initComponents();
         cbCargo.removeAllItems();
         llenarCargosCombo();
+        mostrarUser();
     }
 
     @SuppressWarnings("unchecked")
@@ -45,22 +46,22 @@ public class FormUser extends javax.swing.JInternalFrame {
         btnCancelarCargo = new javax.swing.JButton();
         btnAgregarCargo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbCargo = new javax.swing.JTable();
+        jtbUser = new javax.swing.JTable();
         btnEliminarCargo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        txtIdCargo = new javax.swing.JTextField();
-        txtUserName = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
+        txtUserNameUser = new javax.swing.JTextField();
         btnModificarCargo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbCargo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
-        txtApellidos = new javax.swing.JTextField();
+        txtNombresUser = new javax.swing.JTextField();
+        txtApellidosUser = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtIdCombo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
+        txtPasswordUser = new javax.swing.JTextField();
 
         jLabel2.setText("CARGO: ");
 
@@ -87,13 +88,13 @@ public class FormUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jtbCargo.setModel(modeloCargo);
-        jtbCargo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtbUser.setModel(modeloUser);
+        jtbUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbCargoMouseClicked(evt);
+                jtbUserMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtbCargo);
+        jScrollPane1.setViewportView(jtbUser);
 
         btnEliminarCargo.setText("Eliminar Usuario");
         btnEliminarCargo.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +112,9 @@ public class FormUser extends javax.swing.JInternalFrame {
             }
         });
 
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+        txtUserNameUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
+                txtUserNameUserActionPerformed(evt);
             }
         });
 
@@ -140,15 +141,15 @@ public class FormUser extends javax.swing.JInternalFrame {
 
         jLabel5.setText("NOMBRES:");
 
-        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+        txtNombresUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombresActionPerformed(evt);
+                txtNombresUserActionPerformed(evt);
             }
         });
 
-        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
+        txtApellidosUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidosActionPerformed(evt);
+                txtApellidosUserActionPerformed(evt);
             }
         });
 
@@ -158,9 +159,9 @@ public class FormUser extends javax.swing.JInternalFrame {
 
         jLabel7.setText("CONTRASEÑA:");
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtPasswordUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+                txtPasswordUserActionPerformed(evt);
             }
         });
 
@@ -175,50 +176,47 @@ public class FormUser extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 703, Short.MAX_VALUE))
-                            .addComponent(txtUserName)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(12, 303, Short.MAX_VALUE)
-                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(195, 195, 195))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(53, 53, 53)
-                                .addComponent(cbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIdCombo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2)
+                        .addGap(53, 53, 53)
+                        .addComponent(cbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtIdCombo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGuardarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCancelarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAgregarCargo)
-                                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(41, 41, 41)
-                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtUserNameUser)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtPasswordUser))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(41, 41, 41)
+                                    .addComponent(txtNombresUser))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(txtApellidosUser))))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregarCargo)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,10 +226,10 @@ public class FormUser extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -251,7 +249,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,11 +259,11 @@ public class FormUser extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombresUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtApellidosUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -280,17 +278,17 @@ public class FormUser extends javax.swing.JInternalFrame {
         //int id = cbCargo.getItemAt(cbCargo.getSelectedIndex()).getId();
         //txtIdCombo.setText(id+"");
         
-       if ((txtUserName.getText().compareTo("") != 0) && 
-           (txtNombres.getText().compareTo("") != 0) && 
-           (txtApellidos.getText().compareTo("") != 0) &&
-           txtPassword.getText().compareTo("") != 0) {
+       if ((txtUserNameUser.getText().compareTo("") != 0) && 
+           (txtNombresUser.getText().compareTo("") != 0) && 
+           (txtApellidosUser.getText().compareTo("") != 0) &&
+           txtPasswordUser.getText().compareTo("") != 0) {
             try {
                 User user = new User();
-                user.setUsername(txtUserName.getText().trim().toUpperCase());
-                user.setPassword(txtPassword.getText().trim());
+                user.setUsername(txtUserNameUser.getText().trim().toUpperCase());
+                user.setPassword(txtPasswordUser.getText().trim());
                 user.setCargo(cbCargo.getItemAt(cbCargo.getSelectedIndex()).getId());
-                user.setNombres(txtNombres.getText().trim().toUpperCase());
-                user.setApellidos(txtApellidos.getText().trim().toUpperCase());
+                user.setNombres(txtNombresUser.getText().trim().toUpperCase());
+                user.setApellidos(txtApellidosUser.getText().trim().toUpperCase());
                 UserServicio userServicio = new UserServicio();
                 registros_afectados = userServicio.guardarUser(user);
                 if (registros_afectados == 1) {
@@ -323,40 +321,48 @@ public class FormUser extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnAgregarCargoActionPerformed
 
-    private void jtbCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbCargoMouseClicked
+    private void jtbUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbUserMouseClicked
 
-        /*int row = jtbCargo.getSelectedRow();
-        txtNombreCargo.setEnabled(true);
-        txtDescripcionCargo.setEnabled(true);
-        txtIdCargo.setText(modeloCargo.getValueAt(row, 0).toString());
-        txtNombreCargo.setText(modeloCargo.getValueAt(row, 1).toString());
-        txtDescripcionCargo.setText(modeloCargo.getValueAt(row, 2).toString());
-        activarInternalFrameModificarCargo(true);
-        */
-    }//GEN-LAST:event_jtbCargoMouseClicked
+        User user=new User();
+        int row = jtbUser.getSelectedRow();
+        txtIdUser.setEnabled(false);
+        txtUserNameUser.setEnabled(true);
+        txtPasswordUser.setEnabled(true);
+        cbCargo.setEnabled(true);
+        txtNombresUser.setEnabled(true);
+        txtApellidosUser.setEnabled(true);
+        txtIdUser.setText(modeloUser.getValueAt(row, 0).toString());
+        txtUserNameUser.setText(modeloUser.getValueAt(row, 1).toString());
+        txtPasswordUser.setText(modeloUser.getValueAt(row, 2).toString());
+        //cbCargo.setSelectedItem( modeloUser.getValueAt(row, 3).toString());
+        txtNombresUser.setText(modeloUser.getValueAt(row, 4).toString());
+        txtApellidosUser.setText(modeloUser.getValueAt(row, 5).toString());
+        //activarInternalFrameModificarCargo(true);
+        
+    }//GEN-LAST:event_jtbUserMouseClicked
 
     private void btnEliminarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCargoActionPerformed
 
         int registros_afectados = 0;
-        /*if (txtIdCargo.getText().compareTo("") != 0) {
+        if (txtIdUser.getText().compareTo("") != 0) {
             try {
-                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas eliminar? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
+                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas eliminar el USUARIO? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
-                    CargoServicio cargoServicio = new CargoServicio();
-                    registros_afectados = cargoServicio.eliminarCargo(Integer.parseInt(txtIdCargo.getText().trim()));
+                    UserServicio userServicio = new UserServicio();
+                    registros_afectados = userServicio.eliminarUser(Integer.parseInt(txtIdUser.getText().trim()));
                     if (registros_afectados == 1) {
-                        JOptionPane.showMessageDialog(this, "Se eliminó correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarPanelCargo();
-                        activarInternalFrameCargo(true);
-                        mostrarCargo();
+                        JOptionPane.showMessageDialog(this, "Se eliminó correctamente el USUARIO.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                        //limpiarPanelCargo();
+                        //activarInternalFrameCargo(true);
+                        //mostrarCargo();
                     }
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema ChicamaSoft: Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema ARCHIVO MDCH: Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un Producto.", "Sistema ChicamaSoft: Advertencia", JOptionPane.WARNING_MESSAGE);
-        }*/
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un USUARIO.", "Sistema ARCHIVO MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnEliminarCargoActionPerformed
 
@@ -366,28 +372,36 @@ public class FormUser extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+    private void txtUserNameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
+    }//GEN-LAST:event_txtUserNameUserActionPerformed
 
     private void btnModificarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCargoActionPerformed
-
+     
         int registros_afectados = 0;
-        /*if (txtNombreCargo.getText().compareTo("") != 0 && txtDescripcionCargo.getText().compareTo("") != 0) {
+        if (txtUserNameUser.getText().compareTo("") != 0 && 
+                txtPasswordUser.getText().compareTo("") != 0 &&
+                txtNombresUser.getText().compareTo("") != 0 &&
+                txtApellidosUser.getText().compareTo("") != 0
+            ) {
             try {
-                Cargo cargo = new Cargo();
-                cargo.setId(Integer.parseInt(txtIdCargo.getText().trim()));
-                cargo.setCargo(txtNombreCargo.getText().trim().toUpperCase());
-                cargo.setDescripcion(txtDescripcionCargo.getText().trim().toUpperCase());
-                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas actualizar la información? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
+                
+                User user = new User();
+                user.setId(Integer.parseInt(txtIdUser.getText().trim()));
+                user.setUsername(txtUserNameUser.getText().trim());
+                user.setPassword(txtPasswordUser.getText().trim());
+                //user.setCargo(cbCargo.getSelectedItem());
+                user.setNombres(txtNombresUser.getText().trim().toUpperCase());
+                user.setApellidos(txtApellidosUser.getText().trim().toUpperCase());
+                int resp = JOptionPane.showConfirmDialog(this, "Estas seguro que deseas actualizar la información de USUARIO? ", "Sistema Archivo MDCH: Advertencia", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
-                    CargoServicio cargoServicio = new CargoServicio();
-                    registros_afectados = cargoServicio.actualizarCargo(cargo);
+                    UserServicio userServicio = new UserServicio();
+                    registros_afectados = userServicio.actualizarUser(user);
                     if (registros_afectados == 1) {
-                        JOptionPane.showMessageDialog(this, "Se actualizo correctamente.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarPanelCargo();
-                        activarInternalFrameCargo(true);
-                        mostrarCargo();
+                        JOptionPane.showMessageDialog(this, "Se actualizo correctamente el USUARIO.", "Sistema Archivo MDCH: Error", JOptionPane.INFORMATION_MESSAGE);
+                        //limpiarPanelCargo();
+                        //activarInternalFrameCargo(true);
+                        //mostrarCargo();
                     }
                 }
             } catch (Exception e) {
@@ -395,17 +409,17 @@ public class FormUser extends javax.swing.JInternalFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un CARGO y tener todos los campos con información.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
-        }*/
+        }
 
     }//GEN-LAST:event_btnModificarCargoActionPerformed
 
-    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+    private void txtNombresUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresActionPerformed
+    }//GEN-LAST:event_txtNombresUserActionPerformed
 
-    private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
+    private void txtApellidosUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidosActionPerformed
+    }//GEN-LAST:event_txtApellidosUserActionPerformed
 
     private void cbCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbCargoMouseClicked
        
@@ -419,27 +433,52 @@ public class FormUser extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbCargoFocusGained
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void txtPasswordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
+    }//GEN-LAST:event_txtPasswordUserActionPerformed
 
     private void llenarCargosCombo() throws Exception {
         cbCargo.removeAllItems();
         CargoServicio cargoServicio=new CargoServicio();
         try {
-            ArrayList<Cargo> listaCargo = cargoServicio.mostrarCargo();
             cbCargo.removeAllItems();
-            
+            ArrayList<Cargo> listaCargo = cargoServicio.mostrarCargo();
+      
             for (int i = 0; i < listaCargo.size(); i++) {
                 //cbCargo.addItem(listaCargo.get(i).getCargo());
                 cbCargo.addItem(new Cargo(listaCargo.get(i).getId(), listaCargo.get(i).getCargo(), listaCargo.get(i).getDescripcion()));
+                
             }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(FormUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
 
+    public void mostrarUser() {
+        try {
+            Cargo cargo=new Cargo();
+            UserServicio userServicio = new UserServicio();
+            ArrayList<User> lista = userServicio.mostrarUser();
+            Object[][] fila = new Object[lista.size()][6];
+            for (int i = 0; i < lista.size(); i++) {
+                User user = lista.get(i);
+                fila[i][0] = user.getId();
+                fila[i][1] = user.getUsername();
+                fila[i][2] = user.getPassword();
+                fila[i][3] = user.getCargo();
+                fila[i][4] = user.getNombres();
+                fila[i][5] = user.getApellidos();
+            }
+            modeloUser.setDataVector(fila, nombreColumnaModeloUser);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema Archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCargo;
     private javax.swing.JButton btnCancelarCargo;
@@ -456,12 +495,12 @@ public class FormUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtbCargo;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtIdCargo;
+    private javax.swing.JTable jtbUser;
+    private javax.swing.JTextField txtApellidosUser;
     private javax.swing.JLabel txtIdCombo;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtIdUser;
+    private javax.swing.JTextField txtNombresUser;
+    private javax.swing.JTextField txtPasswordUser;
+    private javax.swing.JTextField txtUserNameUser;
     // End of variables declaration//GEN-END:variables
 }
