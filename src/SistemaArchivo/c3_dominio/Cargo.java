@@ -11,6 +11,10 @@ public class Cargo {
         
     }
     
+    public Cargo(String descripcion){
+        this.descripcion = descripcion;
+    }
+    
     public Cargo(int id){
         this.id = id;
     }

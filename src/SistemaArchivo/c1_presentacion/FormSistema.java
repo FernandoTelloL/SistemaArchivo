@@ -1,7 +1,6 @@
 
 package SistemaArchivo.c1_presentacion;
 
-import SistemaArchivo.c2_aplicacion.CargoServicio;
 import SistemaArchivo.c3_dominio.Cargo;
 import java.awt.Color;
 import java.beans.PropertyVetoException;
@@ -17,6 +16,7 @@ public class FormSistema extends javax.swing.JFrame {
     FormUser formUser;
     FormArea formArea = new FormArea();
     FormTipoDocumento formTipoDocumento = new FormTipoDocumento();
+    FormDocumento formDocumento = new FormDocumento();
     private JDesktopPane escritorio;
     
     
@@ -53,6 +53,7 @@ public class FormSistema extends javax.swing.JFrame {
         menuUsuarios = new javax.swing.JMenuItem();
         menuArea = new javax.swing.JMenuItem();
         menuTipoDocumento = new javax.swing.JMenuItem();
+        menuDocumento = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -123,6 +124,14 @@ public class FormSistema extends javax.swing.JFrame {
         });
         jMenu2.add(menuTipoDocumento);
 
+        menuDocumento.setText("Documento");
+        menuDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDocumentoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuDocumento);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -173,6 +182,11 @@ public class FormSistema extends javax.swing.JFrame {
         formTipoDocumento.setVisible(true);
     }//GEN-LAST:event_menuTipoDocumentoActionPerformed
 
+    private void menuDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDocumentoActionPerformed
+        escritorio.add(formDocumento);
+        formDocumento.setVisible(true);
+    }//GEN-LAST:event_menuDocumentoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,6 +235,7 @@ public class FormSistema extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem menuArea;
     private javax.swing.JMenuItem menuCargo;
+    private javax.swing.JMenuItem menuDocumento;
     private javax.swing.JMenuItem menuSalir;
     private javax.swing.JMenuItem menuTipoDocumento;
     private javax.swing.JMenuItem menuUsuarios;

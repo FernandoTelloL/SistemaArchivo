@@ -1,15 +1,20 @@
 
 package SistemaArchivo.c1_presentacion;
 
+import config.Utils;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 public class FormLogin extends javax.swing.JFrame {
 
+    Utils util = new Utils();
+        
   
     public FormLogin() {
         initComponents();
@@ -17,6 +22,7 @@ public class FormLogin extends javax.swing.JFrame {
         txtPassword.setText("");
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.DARK_GRAY);
+        util.loadConfig();
     }
 
     @SuppressWarnings("unchecked")
@@ -26,11 +32,11 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnIniciarSesion = new javax.swing.JButton();
-        txtPassword = new javax.swing.JTextField();
         txtUserName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         jLabel4.setText("jLabel4");
 
@@ -38,7 +44,11 @@ public class FormLogin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel1KeyPressed(evt);
+            }
+        });
 
         btnIniciarSesion.setBackground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setForeground(new java.awt.Color(51, 51, 51));
@@ -49,30 +59,88 @@ public class FormLogin extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 130, 30));
-
-        txtPassword.setBackground(new java.awt.Color(204, 204, 204));
-        txtPassword.setForeground(new java.awt.Color(51, 51, 51));
-        txtPassword.setBorder(null);
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 260, 30));
+        btnIniciarSesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnIniciarSesionKeyPressed(evt);
+            }
+        });
 
         txtUserName.setBackground(new java.awt.Color(204, 204, 204));
         txtUserName.setForeground(new java.awt.Color(51, 51, 51));
         txtUserName.setBorder(null);
-        jPanel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 260, 30));
+        txtUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtUserNameMouseEntered(evt);
+            }
+        });
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyPressed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Contraseña: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, 20));
 
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Nombre de usuario: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("BIENVENIDO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 230, -1));
+
+        txtPassword.setText("jPasswordField1");
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel2)
+                        .addGap(2, 2, 2)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3)
+                        .addGap(44, 44, 44)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel1)
+                .addGap(62, 62, 62)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80)
+                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 530));
 
@@ -89,6 +157,34 @@ public class FormLogin extends javax.swing.JFrame {
             Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void txtUserNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMouseEntered
+        
+    }//GEN-LAST:event_txtUserNameMouseEntered
+
+    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtUserNameKeyPressed
+
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnIniciarSesion.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnIniciarSesionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIniciarSesionKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnIniciarSesion.doClick();
+        }
+    }//GEN-LAST:event_btnIniciarSesionKeyPressed
 
  
     public static void main(String args[]) {
@@ -127,7 +223,7 @@ public class FormLogin extends javax.swing.JFrame {
     public Connection Conectar() {
         Connection con = null;
         try {
-           con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","fernando","fernando");
+           con= DriverManager.getConnection("jdbc:mysql://localhost/mydb",util.getProperty("user").toString(),util.getProperty("user").toString());
         } catch (SQLException e) {
             System.err.print(e.toString());
             JOptionPane.showMessageDialog(this, "ocurrió un error inesperado, comuniquese con el administrador");
@@ -136,11 +232,12 @@ public class FormLogin extends javax.swing.JFrame {
     }
     
     public void ingresar() throws PropertyVetoException, Exception {
+        
         Connection con1 = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        String userName = txtUserName.getText();
-        String pass = txtPassword.getText();
+        String userName = txtUserName.getText().toUpperCase();
+        String pass = txtPassword.getText().toUpperCase();
         if(userName.equals("") || pass.equals("")) {
             JOptionPane.showMessageDialog(this, "Uno o mas campos están vacios, por favor llenarlos.");
         } else {
@@ -156,7 +253,7 @@ public class FormLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"Credenciales incorrectas vuelve a intentar denuevo");
                 }
             } catch (SQLException e) {
-                
+                 Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }
@@ -168,7 +265,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
