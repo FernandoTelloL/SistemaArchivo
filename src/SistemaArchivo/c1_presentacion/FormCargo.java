@@ -56,6 +56,8 @@ public class FormCargo extends javax.swing.JInternalFrame {
         btnCancelarCargo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setResizable(true);
         setTitle("CARGO");
 
         btnSalir.setBackground(new java.awt.Color(51, 51, 51));

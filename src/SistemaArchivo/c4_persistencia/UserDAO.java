@@ -1,6 +1,7 @@
 
 package SistemaArchivo.c4_persistencia;
 
+import SistemaArchivo.c3_dominio.Cargo;
 import SistemaArchivo.c3_dominio.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class UserDAO {
             PreparedStatement sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
             sentencia.setString(1, user.getUsername());
             sentencia.setString(2, user.getPassword());
-            sentencia.setInt(3, user.getCargo());
+            sentencia.setInt(3, user.getCargo().getId());
             sentencia.setString(4, user.getNombres());
             sentencia.setString(5, user.getApellidos());
             registros_afectados = sentencia.executeUpdate();
@@ -56,7 +57,7 @@ public class UserDAO {
             PreparedStatement sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
             sentencia.setString(1, user.getUsername());
             sentencia.setString(2, user.getPassword());
-            sentencia.setInt(3, user.getCargo());
+            sentencia.setInt(3, user.getCargo().getId());
             sentencia.setString(4, user.getNombres());
             sentencia.setString(5, user.getApellidos());
             sentencia.setInt(6, user.getId());
@@ -89,15 +90,19 @@ public class UserDAO {
     //mostrar cargos en tabla
     public ArrayList<User> mostrarUser() throws SQLException {
         ArrayList<User> lista = new ArrayList<>();
-        String sentenciaSQL = "select * from user where estado = 'V'";
+        String sentenciaSQL = "select u.id, u.username, u.password, u.create_time, u.cargo_id, u.nombres, u.apellidos, c.cargo"
+                + " from user u join cargo c on c.id = u.cargo_id  where u.estado = 'V'";
         try {
             ResultSet resultado = gestorJDBC.ejecutarConsulta(sentenciaSQL);
             while (resultado.next()) {
                 User user = new User();
+                Cargo cargo = new Cargo();
                 user.setId(resultado.getInt("id"));
                 user.setUsername(resultado.getString("username"));
                 user.setPassword(resultado.getString("password"));
-                user.setCargo(resultado.getInt("cargo_id"));
+                cargo.setCargo(resultado.getString("cargo"));
+                cargo.setId(resultado.getInt("cargo_id"));
+                user.setCargo(cargo);
                 user.setNombres(resultado.getString("nombres"));
                 user.setApellidos(resultado.getString("apellidos"));
                 lista.add(user);

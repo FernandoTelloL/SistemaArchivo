@@ -66,6 +66,8 @@ public class FormArea extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setClosable(true);
+        setResizable(true);
 
         btnGuardarArea.setBackground(new java.awt.Color(51, 51, 51));
         btnGuardarArea.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N

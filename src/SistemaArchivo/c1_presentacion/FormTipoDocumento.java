@@ -66,6 +66,9 @@ public class FormTipoDocumento extends javax.swing.JInternalFrame {
         btnModificarTipoDocumento = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setResizable(true);
+
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setText("NOMBRE TIPO DOCUMENTO:");
 

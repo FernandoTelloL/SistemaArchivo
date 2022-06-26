@@ -102,4 +102,18 @@ public class CargoServicio {
         }
     }
     
+    public Cargo findById(int id) throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            Cargo cargo = cargoDAO.findById(id);
+            gestorJDBC.terminarTransaccion();
+            return cargo;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+    
 }

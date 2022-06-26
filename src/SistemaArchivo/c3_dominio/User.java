@@ -5,8 +5,8 @@ public class User {
 
     private int id;
     private String username;
-    private String password;
-    private int cargo;
+    private String password;    
+    private Cargo cargo;
     private String nombres;
     private String apellidos;
     
@@ -56,16 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public int getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(int cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
-    }
-
-  
-    
-    
-    
+    } 
 }
