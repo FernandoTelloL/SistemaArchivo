@@ -3,6 +3,7 @@ package SistemaArchivo.c1_presentacion;
 
 import SistemaArchivo.c2_aplicacion.CargoServicio;
 import SistemaArchivo.c3_dominio.Cargo;
+import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.lang.System.Logger;
 import java.util.ArrayList;
@@ -26,10 +27,12 @@ public class FormCargo extends javax.swing.JInternalFrame {
 
     public FormCargo() throws PropertyVetoException {
         initComponents();
-      
+        
         mostrarCargo();
         activarInternalFrameInicio(true);
+        this.setMaximum(true);
         modeloCargo.setColumnIdentifiers(nombreColumnaModeloCargo);
+        this.getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     @SuppressWarnings("unchecked")
@@ -51,9 +54,13 @@ public class FormCargo extends javax.swing.JInternalFrame {
         btnModificarCargo = new javax.swing.JButton();
         btnGuardarCargo = new javax.swing.JButton();
         btnCancelarCargo = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setTitle("CARGO");
 
+        btnSalir.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalir.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(204, 204, 204));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,16 +68,26 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        txtNombreCargo.setBackground(new java.awt.Color(51, 51, 51));
+        txtNombreCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        txtNombreCargo.setForeground(new java.awt.Color(204, 204, 204));
         txtNombreCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreCargoActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("DESCRIPCION: ");
 
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("CARGO:");
 
+        btnAgregarCargo.setBackground(new java.awt.Color(51, 51, 51));
+        btnAgregarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnAgregarCargo.setForeground(new java.awt.Color(204, 204, 204));
         btnAgregarCargo.setText("Agregar Cargo");
         btnAgregarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +95,7 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        jtbCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jtbCargo.setModel(modeloCargo);
         jtbCargo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,10 +104,16 @@ public class FormCargo extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtbCargo);
 
+        txtDescripcionCargo.setBackground(new java.awt.Color(51, 51, 51));
         txtDescripcionCargo.setColumns(20);
+        txtDescripcionCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        txtDescripcionCargo.setForeground(new java.awt.Color(204, 204, 204));
         txtDescripcionCargo.setRows(5);
         jScrollPane2.setViewportView(txtDescripcionCargo);
 
+        btnEliminarCargo.setBackground(new java.awt.Color(51, 51, 51));
+        btnEliminarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnEliminarCargo.setForeground(new java.awt.Color(204, 204, 204));
         btnEliminarCargo.setText("Eliminar Cargo");
         btnEliminarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +121,17 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("ID:");
 
+        txtIdCargo.setBackground(new java.awt.Color(51, 51, 51));
+        txtIdCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        txtIdCargo.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnModificarCargo.setBackground(new java.awt.Color(51, 51, 51));
+        btnModificarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnModificarCargo.setForeground(new java.awt.Color(204, 204, 204));
         btnModificarCargo.setText("Modificar Cargo");
         btnModificarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +139,9 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        btnGuardarCargo.setBackground(new java.awt.Color(51, 51, 51));
+        btnGuardarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnGuardarCargo.setForeground(new java.awt.Color(204, 204, 204));
         btnGuardarCargo.setText("Guardar Cargo");
         btnGuardarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +149,9 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelarCargo.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnCancelarCargo.setForeground(new java.awt.Color(204, 204, 204));
         btnCancelarCargo.setText("Cancelar");
         btnCancelarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,43 +159,50 @@ public class FormCargo extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Montserrat Black", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("FORMULARIO DE MANTENIMIENTO DE CARGOS DE SISTEMA DE ARCHIVOS MDCH");
+        jLabel4.setAlignmentX(50.0F);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAgregarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNombreCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAgregarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(166, 166, 166))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel4)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIdCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,29 +210,28 @@ public class FormCargo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(btnAgregarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGuardarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnModificarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalir)
-                        .addGap(134, 134, 134))))
+                        .addComponent(btnAgregarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnModificarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,10 +303,10 @@ public class FormCargo extends javax.swing.JInternalFrame {
                     }
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema ChicamaSoft: Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Sistema Archivo MDCH: Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un Producto.", "Sistema ChicamaSoft: Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Producto.", "Sistema Archivo MDCH: Advertencia", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_btnEliminarCargoActionPerformed
@@ -357,12 +402,15 @@ public class FormCargo extends javax.swing.JInternalFrame {
     }
     
     public void activarInternalFrameAgregarCargo(boolean sw) {
-        txtIdCargo.setEnabled(!sw);
         txtNombreCargo.setEnabled(sw);
         txtDescripcionCargo.setEnabled(sw);
         btnGuardarCargo.setEnabled(sw);
         btnCancelarCargo.setEnabled(sw);
         btnAgregarCargo.setEnabled(!sw);
+        btnAgregarCargo.setForeground(Color.gray);
+        txtIdCargo.setEnabled(!sw);
+        txtIdCargo.setBackground(Color.DARK_GRAY);
+        txtIdCargo.setForeground(Color.gray);
     }
     
     public void activarInternalFrameModificarCargo(boolean sw) {
@@ -386,6 +434,7 @@ public class FormCargo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtbCargo;

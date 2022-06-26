@@ -1,55 +1,28 @@
 
 package SistemaArchivo.c2_aplicacion;
 
-import SistemaArchivo.c3_dominio.User;
-import SistemaArchivo.c4_persistencia.UserDAO;
+import SistemaArchivo.c3_dominio.Area;
 import SistemaArchivo.c4_persistencia.GestorJDBC;
 import SistemaArchivo.c4_persistencia.GestorJDBCMySQL;
+import SistemaArchivo.c4_persistencia.AreaDAO;
 import java.util.ArrayList;
 
-public class UserServicio {
+public class AreaServicio {
     
     private GestorJDBC gestorJDBC;
-    private UserDAO userDAO;
-
-    public UserServicio() {
+    private AreaDAO areaDAO;
+    
+    
+    public AreaServicio() {
         gestorJDBC = new GestorJDBCMySQL();
-        userDAO = new UserDAO(gestorJDBC);
+        areaDAO = new AreaDAO(gestorJDBC);
     }
     
-     public int guardarUser(User user) throws Exception {
+    public int guardarArea(Area area) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.guardarUser(user);
-            gestorJDBC.terminarTransaccion();
-            return registros_afectados;
-        } catch (Exception e) {
-            gestorJDBC.cancelarTransaccion();
-            gestorJDBC.cerrarConexion();
-            throw e;
-        }
-    }
-
-     public int eliminarUser(int userId) throws Exception {
-        try {
-            gestorJDBC.abrirConexion();
-            gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.eliminarUser(userId);
-            gestorJDBC.terminarTransaccion();
-            return registros_afectados;
-        } catch (Exception e) {
-            gestorJDBC.cancelarTransaccion();
-            gestorJDBC.cerrarConexion();
-            throw e;
-        }
-    }
-     
-    public int actualizarUser(User user) throws Exception {
-        try {
-            gestorJDBC.abrirConexion();
-            gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.actualizarUser(user);
+            int registros_afectados = areaDAO.guardarArea(area);
             gestorJDBC.terminarTransaccion();
             return registros_afectados;
         } catch (Exception e) {
@@ -59,13 +32,40 @@ public class UserServicio {
         }
     }
     
-     
-     //este método lo uso para mostrar en la tabla los datos del usuario
-     public ArrayList<User> mostrarUser() throws Exception {
+     public int eliminarArea(int areaId) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            ArrayList<User> lista = userDAO.mostrarUser();
+            int registros_afectados = areaDAO.eliminarArea(areaId);
+            gestorJDBC.terminarTransaccion();
+            return registros_afectados;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+     
+     public int actualizarArea(Area area) throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            int registros_afectados = areaDAO.actualizarArea(area);
+            gestorJDBC.terminarTransaccion();
+            return registros_afectados;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+     
+     //este método lo uso para mostrar en la tabla los datos del area
+     public ArrayList<Area> mostrarArea() throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            ArrayList<Area> lista = areaDAO.mostrarArea();
             gestorJDBC.terminarTransaccion();
             return lista;
         } catch (Exception e) {

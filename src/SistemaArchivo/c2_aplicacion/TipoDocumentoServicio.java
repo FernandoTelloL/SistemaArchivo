@@ -1,41 +1,29 @@
 
 package SistemaArchivo.c2_aplicacion;
 
-import SistemaArchivo.c3_dominio.User;
-import SistemaArchivo.c4_persistencia.UserDAO;
+
+import SistemaArchivo.c3_dominio.TipoDocumento;
 import SistemaArchivo.c4_persistencia.GestorJDBC;
 import SistemaArchivo.c4_persistencia.GestorJDBCMySQL;
+import SistemaArchivo.c4_persistencia.TipoDocumentoDAO;
 import java.util.ArrayList;
 
-public class UserServicio {
+public class TipoDocumentoServicio {
     
     private GestorJDBC gestorJDBC;
-    private UserDAO userDAO;
-
-    public UserServicio() {
+    private TipoDocumentoDAO tipoDocumentoDAO;
+    
+    
+    public TipoDocumentoServicio() {
         gestorJDBC = new GestorJDBCMySQL();
-        userDAO = new UserDAO(gestorJDBC);
+        tipoDocumentoDAO = new TipoDocumentoDAO(gestorJDBC);
     }
     
-     public int guardarUser(User user) throws Exception {
+     public int guardarTipoDocumento(TipoDocumento tipoDocumento) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.guardarUser(user);
-            gestorJDBC.terminarTransaccion();
-            return registros_afectados;
-        } catch (Exception e) {
-            gestorJDBC.cancelarTransaccion();
-            gestorJDBC.cerrarConexion();
-            throw e;
-        }
-    }
-
-     public int eliminarUser(int userId) throws Exception {
-        try {
-            gestorJDBC.abrirConexion();
-            gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.eliminarUser(userId);
+            int registros_afectados = tipoDocumentoDAO.guardarArea(tipoDocumento);
             gestorJDBC.terminarTransaccion();
             return registros_afectados;
         } catch (Exception e) {
@@ -45,11 +33,11 @@ public class UserServicio {
         }
     }
      
-    public int actualizarUser(User user) throws Exception {
+    public int eliminarTipoDocumento(int tipoDocumentoId) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            int registros_afectados = userDAO.actualizarUser(user);
+            int registros_afectados = tipoDocumentoDAO.eliminarTipoDocumento(tipoDocumentoId);
             gestorJDBC.terminarTransaccion();
             return registros_afectados;
         } catch (Exception e) {
@@ -59,13 +47,26 @@ public class UserServicio {
         }
     }
     
-     
-     //este método lo uso para mostrar en la tabla los datos del usuario
-     public ArrayList<User> mostrarUser() throws Exception {
+    public int actualizarTipoDocumento(TipoDocumento tipoDocumento) throws Exception {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            ArrayList<User> lista = userDAO.mostrarUser();
+            int registros_afectados = tipoDocumentoDAO.actualizarTipoDocumento(tipoDocumento);
+            gestorJDBC.terminarTransaccion();
+            return registros_afectados;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            gestorJDBC.cerrarConexion();
+            throw e;
+        }
+    }
+    
+    //este método lo uso para mostrar en la tabla los datos del area
+     public ArrayList<TipoDocumento> mostrarTipoDocumento() throws Exception {
+        try {
+            gestorJDBC.abrirConexion();
+            gestorJDBC.iniciarTransaccion();
+            ArrayList<TipoDocumento> lista = tipoDocumentoDAO.mostrarTipoDocumento();
             gestorJDBC.terminarTransaccion();
             return lista;
         } catch (Exception e) {

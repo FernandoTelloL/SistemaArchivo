@@ -69,6 +69,7 @@ public class UserDAO {
         }
     }
     
+     //ESTE METODO FALTA IMPLEMENTAR EN INTERFAZ
     public int obtenerIdUser(Object user) throws SQLException {
         int registros_afectados;
         int idUser = 0;

@@ -11,6 +11,10 @@ public class Cargo {
         
     }
     
+    public Cargo(int id){
+        this.id = id;
+    }
+    
     public Cargo(int id, String cargo, String descripcion) {
         this.id = id;
         this.cargo = cargo;
@@ -41,8 +45,14 @@ public class Cargo {
         this.descripcion = descripcion;
     }
     
+    //muestra el nombre del cargo
+    @Override
     public String toString() {
         return cargo; 
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((Cargo) obj).id;
+    }
 }
