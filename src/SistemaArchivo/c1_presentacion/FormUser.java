@@ -68,12 +68,13 @@ public class FormUser extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
+        setTitle("Mantenimiento de USUARIOS MDCH");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("CARGO: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 187, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
         btnGuardarCargo.setBackground(new java.awt.Color(51, 51, 51));
         btnGuardarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -84,12 +85,12 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnGuardarCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 337, 124, 35));
+        getContentPane().add(btnGuardarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 124, 35));
 
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("USERNAME:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 119, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         btnCancelarCargo.setBackground(new java.awt.Color(51, 51, 51));
         btnCancelarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -100,7 +101,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnCancelarCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 471, 124, 33));
+        getContentPane().add(btnCancelarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, 124, 33));
 
         btnAgregarCargo.setBackground(new java.awt.Color(51, 51, 51));
         btnAgregarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -111,7 +112,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnAgregarCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 212, -1, 39));
+        getContentPane().add(btnAgregarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 200, -1, 39));
 
         jtbUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jtbUser.setModel(modeloUser);
@@ -122,7 +123,7 @@ public class FormUser extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtbUser);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 297, 686, 251));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 686, 251));
 
         btnEliminarCargo.setBackground(new java.awt.Color(51, 51, 51));
         btnEliminarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -133,12 +134,12 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnEliminarCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 425, 124, 34));
+        getContentPane().add(btnEliminarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 124, 34));
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("ID:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 85, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         btnSalir.setBackground(new java.awt.Color(51, 51, 51));
         btnSalir.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -149,7 +150,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 516, 124, 32));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 510, 124, 32));
 
         txtUserNameUser.setBackground(new java.awt.Color(51, 51, 51));
         txtUserNameUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -159,7 +160,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 txtUserNameUserActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUserNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 116, 210, -1));
+        getContentPane().add(txtUserNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 210, -1));
 
         btnModificarCargo.setBackground(new java.awt.Color(51, 51, 51));
         btnModificarCargo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -170,7 +171,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 btnModificarCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 384, -1, 35));
+        getContentPane().add(btnModificarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 380, -1, 35));
 
         jLabel4.setFont(new java.awt.Font("Montserrat Black", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
@@ -195,12 +196,12 @@ public class FormUser extends javax.swing.JInternalFrame {
                 cbCargoActionPerformed(evt);
             }
         });
-        getContentPane().add(cbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 184, 210, -1));
+        getContentPane().add(cbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 210, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("NOMBRES:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 215, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
         txtNombresUser.setBackground(new java.awt.Color(51, 51, 51));
         txtNombresUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -210,7 +211,7 @@ public class FormUser extends javax.swing.JInternalFrame {
                 txtNombresUserActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombresUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 212, 587, -1));
+        getContentPane().add(txtNombresUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 587, -1));
 
         txtApellidosUser.setBackground(new java.awt.Color(51, 51, 51));
         txtApellidosUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -220,17 +221,17 @@ public class FormUser extends javax.swing.JInternalFrame {
                 txtApellidosUserActionPerformed(evt);
             }
         });
-        getContentPane().add(txtApellidosUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 246, 587, -1));
+        getContentPane().add(txtApellidosUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 587, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("APELLIDOS");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 248, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("CONTRASEÑA:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 153, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
         txtPasswordUser.setBackground(new java.awt.Color(51, 51, 51));
         txtPasswordUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -240,11 +241,10 @@ public class FormUser extends javax.swing.JInternalFrame {
                 txtPasswordUserActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPasswordUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 150, 210, -1));
+        getContentPane().add(txtPasswordUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 210, -1));
 
         txtIdUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtIdUser.setText("jLabel8");
-        getContentPane().add(txtIdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        getContentPane().add(txtIdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 70, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

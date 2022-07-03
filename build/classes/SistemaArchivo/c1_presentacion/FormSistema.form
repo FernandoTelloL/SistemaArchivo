@@ -35,12 +35,20 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" value="Archivo"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuDocumento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Crear Documento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuDocumentoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuSalir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
@@ -104,14 +112,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuTipoDocumentoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuDocumento">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Documento"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuDocumentoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

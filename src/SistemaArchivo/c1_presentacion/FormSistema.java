@@ -24,7 +24,7 @@ public class FormSistema extends javax.swing.JFrame {
         initComponents();
         this.formUser = new FormUser();
         this.setLocationRelativeTo(null);
-        this.setTitle("Sistema de Archivos MDCH");
+        this.setTitle("Sistema de Registro de Documentos Unidad de Archivo General  MDCH");
         escritorio = new JDesktopPane();
         this.setContentPane(escritorio);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -47,13 +47,13 @@ public class FormSistema extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuDocumento = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
         menuArea = new javax.swing.JMenuItem();
         menuTipoDocumento = new javax.swing.JMenuItem();
-        menuDocumento = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -67,8 +67,16 @@ public class FormSistema extends javax.swing.JFrame {
 
         jMenuBar1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        menuDocumento.setText("Crear Documento");
+        menuDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDocumentoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuDocumento);
 
         menuSalir.setText("Salir");
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -123,14 +131,6 @@ public class FormSistema extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menuTipoDocumento);
-
-        menuDocumento.setText("Documento");
-        menuDocumento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuDocumentoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuDocumento);
 
         jMenuBar1.add(jMenu2);
 

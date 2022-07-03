@@ -58,7 +58,7 @@ public class FormCargo extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
-        setTitle("CARGO");
+        setTitle("Mantenimiento de Cargos MDCH");
 
         btnSalir.setBackground(new java.awt.Color(51, 51, 51));
         btnSalir.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N

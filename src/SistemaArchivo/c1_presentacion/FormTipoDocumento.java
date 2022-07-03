@@ -68,6 +68,7 @@ public class FormTipoDocumento extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
+        setTitle("Mantenimiento de TIPO DE DOCUMENTOS MDCH");
 
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setText("NOMBRE TIPO DOCUMENTO:");
